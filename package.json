@@ -1,0 +1,33 @@
+{
+  "name": "higlass-fancy",
+  "version": "0.1.0",
+  "description": "Fancy view configs for HiGlass",
+  "author": "Fritz Lekschas",
+  "keywords": [
+    "hi-c",
+    "genomics",
+    "matrix",
+    "tracks"
+  ],
+  "scripts": {
+    "build": "cp ./node_modules/higlass/dist/scripts/hglib.js ./docs/hglib.js; cp ./node_modules/higlass/dist/styles/hglib.css ./docs/hglib.css; cp ./node_modules/bootstrap/dist/css/bootstrap.css ./docs/bootstrap.css; cp ./node_modules/pixi.js/dist/pixi.min.js ./docs/pixi.js; cp ./node_modules/react/dist/react.js ./docs/react.js; cp ./node_modules/react/dist/react.min.js ./docs/react.js; cp ./node_modules/react-bootstrap/dist/react-bootstrap.min.js ./docs/react-bootstrap.js; cp ./node_modules/react-dom/dist/react-dom.min.js ./docs/react-dom.js",
+    "start": "npm run build; live-server --port=8008 --ignore=node_modules docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flekschas/higlass-fancy"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "higlass": "^1.0.1",
+    "pixi.js": "^4.6.2",
+    "react": "^15.6.2",
+    "react-bootstrap": "^0.32.0",
+    "react-dom": "^15.6.2"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.5.1",
+    "live-server": "^1.2.0"
+  }
+}
