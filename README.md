@@ -11,4 +11,4 @@ Check out the `docs` folder to find some cool view configs. We claim absolutely 
 
 ## View Configs
 
-- [Dark Theme]](https://flekschas.github.io/higlass-fancy)
+- [Dark Theme](https://flekschas.github.io/higlass-fancy)
