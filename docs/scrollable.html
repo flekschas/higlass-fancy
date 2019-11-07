@@ -7,7 +7,7 @@
 <meta name="keywords" content="HiGlass, Scrollable, Scrolling, Figure, Views">
 <title>HiGlass &middot; Scrollable Views</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://unpkg.com/higlass@1.7.1/dist/hglib.css">
+<link rel="stylesheet" href="https://unpkg.com/higlass@1.7.2/dist/hglib.css">
 
 <style type="text/css">
   body {
@@ -37,16 +37,18 @@
 <script src="https://unpkg.com/react-dom@16.8/umd/react-dom.development.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.5/pixi.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/0.32.1/react-bootstrap.min.js"></script>
-<script src='https://unpkg.com/higlass@1.7/dist/hglib.min.js'></script>
+<script src='https://unpkg.com/higlass@1.7.2/dist/hglib.min.js'></script>
 </head>
 <body>
   <label>
-    <input id="scrollable" type="checkbox" checked="checked"> Enable Scrolling
+    <input id="scrolling" type="checkbox"> Enable Scrolling
   </label>
   <div id="container">
     <div id="demo"></div>
   </div>
-  <p>To enable scrolling you have to <a href="https://docs.higlass.io/javascript_api.html#creating-an-inline-higlass-component" target="_blank">set <code>scrollable: true</code> in the global HiGlass options</a> or use the new <a href="https://docs.higlass.io/javascript_api.html#option" target="_blank"><code>option()</code> endpoint of the JS API</a>.</p>
+  <p>To enable scrolling you have to <a href="https://docs.higlass.io/javascript_api.html#creating-an-inline-higlass-component" target="_blank">set <code>sizeMode: 'scroll'</code> in the global HiGlass options</a> or use the new <a href="https://docs.higlass.io/javascript_api.html#option" target="_blank"><code>option()</code> endpoint of the JS API</a>. When switching between scrolling and pan&zooming you can make use of <code>sizeMode: 'overflow'</code>, which preserves current scroll position while pan&zooming is enabled and scrolling is disabled.</p>
+  <p>For an example how to use scrolling take a look <a href="https://github.com/flekschas/higlass-fancy/blob/master/docs/scrollable.html#L989-L1002" target="_blank">scrollable.html#L989-L1002</a>.</p>
+  <p>HiGlass' source code is available at <a href="https://github.com/higlass/higlass" target="_blank">github.com/higlass/higlass</a>.</p>
 </body>
 <script>
 const h = 6;
@@ -988,14 +990,15 @@ const hgApi = hglib.viewer(
   document.getElementById('demo'),
   viewConfig,
   {
-    bounded: true,
-    scrollable: true,
-  },
+    sizeMode: 'overflow'
+  }
 );
 
-document.getElementById('scrollable').addEventListener('change', () => {
-  console.log('Scrolling: ', document.getElementById('scrollable').checked);
-  hgApi.option('scrollable', document.getElementById('scrollable').checked);
+document.getElementById('scrolling').addEventListener('change', () => {
+  hgApi.option(
+    'sizeMode',
+    document.getElementById('scrolling').checked ? 'scroll' : 'overflow'
+  );
 });
 </script>
 </html>
